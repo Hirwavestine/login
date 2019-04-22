@@ -1,0 +1,27 @@
+{
+  "name": "login",
+  "version": "1.0.0",
+  "description": "Login App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hirwavestine/login.git"
+  },
+  "keywords": [
+    "Login"
+  ],
+  "author": "Hirwa Vestine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hirwavestine/login/issues"
+  },
+  "homepage": "https://github.com/Hirwavestine/login#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.2"
+  }
+}
