@@ -1,6 +1,11 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const User = require("./models/User");
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect("mongod://127.0.0.1/LOGIN", { useNewUrlParser: true }, () => {
   console.log("connected");
 });
