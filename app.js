@@ -35,7 +35,7 @@ app.post("/regist er", (req, res) => {
 });
 //login user
 app.post("/login", (req, res) => {
-  user.findOne({ email: req.body.email }).then(user => {
+  User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       bcrypt.compare(req.body.password, user.password, (err, matched) => {
         if (err) return err;
