@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 mongoose.connect("mongod://127.0.0.1/LOGIN", { useNewUrlParser: true }, () => {
   console.log("connected");
 });
+//create a register route
 app.post("/register", (req, res) => {
   const newUser = new User();
   newUser.email = req.body.email;
