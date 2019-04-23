@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const User = require("./models/User");
+const bcrypt = require("bcryptjs");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -14,16 +15,24 @@ app.post("/register", (req, res) => {
   const newUser = new User();
   newUser.email = req.body.email;
   newUser.password = req.body.password;
-  //save newUser
-  newUser
-    .save()
-    .then(userSaved => {
-      res.send("USER SAVED");
-    })
-    .catch(err => {
-      res.send("User was not saved because ...." + err);
+  //hash password
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(newUser.password, salt, (err, hash) => {
+      if (err) return err;
+      newUser.password = hash;
+      newUser
+        .save()
+        .then(userSaved => {
+          res.send("USER SAVED");
+        })
+        .catch(err => {
+          res.send("User was not saved because ...." + err);
+        });
     });
+  });
 });
+//save newUser
+
 app.listen(4111, () => {
   console.log("listening on port 4111");
 });
